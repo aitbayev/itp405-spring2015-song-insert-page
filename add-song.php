@@ -46,9 +46,22 @@ $price = $_POST['price'];
 <html>
     <head>
     <title> Song insert </title>
+        <style>
+            .left {
+                float: left;
+                width: 100px;
+            }
+
+            .right {
+                margin-left:100px;
+            }
+
+           
+           
+            </style>
     </head>
     <body>
-    
+        <h2> Add a new song </h2>
     <div>
        <?php if (isset($_POST['submit']) && !empty($title) && !empty($artistID) && !empty($genreID) && !empty($price)){ ?>
         
@@ -61,19 +74,28 @@ $price = $_POST['price'];
         
         </div>
     <form method ="post">
-        Song title <input type="text" name="title"> </input>
-        <br/>
-        Artist<select name="artist">
-            <option value="">Artist</option>
+       <div class="left"> Song title </div>
+       <div class="right"> <input type="text" name="title"> </input></div>
+        
+        
+        
+        <div class="left"> Artist </div>
+        <div class="right"> <select name="artist">
+           <option value="">Artist</option>
             <?php 
                 foreach($artists as $artist){
             echo "<option value = '" .$artist['id'] . "'>" .                                                       $artist['artist_name'] . "</option>";
             
                 }
             ?>
+        
+        
         </select>
-        <br/>
-       Genre <select name="genre">
+        </div>
+        
+       
+        <div class="left"> Genre </div>
+        <div class="right"><select name="genre">
             <option value="">Genre</option>
             <?php
             foreach($genres as $genre){
@@ -83,11 +105,18 @@ $price = $_POST['price'];
             ?>
             
         </select>
-        <br/>
+        </div>
         
-        Price <input type="text" name="price"> </input>
+       
+        
+        <div class="left">Price</div> 
+        
+        <div class="right"><input type="text" name="price"</input> </div>
+    
+    
               <input type="submit" name="submit"> </input>
         
+
         </form>
     <?php  } ?>
     </body>
